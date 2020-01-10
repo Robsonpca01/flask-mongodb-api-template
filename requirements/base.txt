@@ -1,0 +1,10 @@
+Flask==1.1.1
+Flask-PyMongo==2.3.0
+pylint==2.3.1
+pymongo==3.9.0
+python-dotenv
+flask-restful
+flask-mongoengine==0.9.5
+mongoengine==0.18.2
+marshmallow==2.15.6
+bcrypt
