@@ -2,6 +2,7 @@
 
 # Importamos as classes API e Resource
 from flask_restful import Api, Resource
+from apps.users.resources import SignUp
 
 # Criamos uma classe que extende de Resource
 
@@ -21,6 +22,7 @@ api = Api()
 def configure_api(app):
     # adicionamos na rota '/' a sua classe correspondente Index
     api.add_resource(Index, '/')
+    api.add_resource(SignUp, '/users')
 
     # inicializamos a api com as configurações do flask vinda por parâmetro
     api.init_app(app)

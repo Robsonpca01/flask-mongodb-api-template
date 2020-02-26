@@ -7,4 +7,6 @@ flask-restful
 flask-mongoengine==0.9.5
 mongoengine==0.18.2
 marshmallow==2.15.6
+dnspython
 bcrypt
+flask_restful

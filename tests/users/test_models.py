@@ -16,7 +16,7 @@ class TestUser:
             'active': True, 'full_name': 'Teste',
             'cpf_cnpj': '11111111111'
         }
-
+       
         # Crio uma instancia do modelo User
         self.model = User(**self.data)
 
