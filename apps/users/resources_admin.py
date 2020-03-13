@@ -10,6 +10,8 @@ from apps.messages import MSG_RESOURCE_FETCHED_PAGINATED, MSG_RESOURCE_FETCHED
 from .models import User
 from .schema import UserSchema
 
+import json
+
 class AdminUserPageList(Resource):
     # Lembra-se do page_id criado na rota ele pode ser acessado como parâmetro
     # do metodo get
@@ -42,6 +44,7 @@ class AdminUserPageList(Resource):
 
 
         # fazemos um dump dos objetos pesquisados
+        print(users.items[0].pk)
         result = schema.dump(users.items)
 
         # criamos dados extras a serem respondidos
@@ -55,3 +58,16 @@ class AdminUserPageList(Resource):
         return resp_ok('Users', MSG_RESOURCE_FETCHED_PAGINATED.format('usuarios'),
             data=result.data,
             **extra)
+
+class AdminUserResource(Resource):
+    def get(self, user_id):
+        schema = UserSchema()
+
+        try:
+            user = User.objects().get(id=user_id)
+        except Exception as e:
+            return resp_exception('User', description=e.__str__())
+
+        result = schema.dump(user)
+
+        return resp_ok('User', MSG_RESOURCE_FETCHED.format('usuários'), result.data)
